@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{name}}</title>
+    </head>
+    <body>
+    {% if name == "kiyokiyo" %}
+    <h1>スペシャル{{name}}バナナ</h1>
+    {% elif name %}
+    <h1>{{name}}バナナ</h1>
+    {% else %}
+    <h1>ただのバナナ</h1>
+    {% endif %}
+    <img src="/static/images/banana.jpg" alt="バナナ">
+    {% for word in mazical %}
+    <p>{{word}}</p>
+    {% endfor %}
+    </body>
+</html>
