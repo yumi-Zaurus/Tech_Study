@@ -21,7 +21,13 @@ def index():
     name = request.args.get("name")
     okyo = ["色不異空", "空不異色", "色即是天","空即是色"]
     return render_template("index.html", name=name, okyo=okyo)
-#    return render_template("index.html")
+
+# 「/index」へPOST通信でアクセスがあった場合
+@app.route("/index", methods = ["post"])
+def post() :
+    name = request.form["name"]
+    okyo = ["色不異空", "空不異色", "色即是天","空即是色"]
+    return render_template("index.html", name=name, okyo=okyo)
 
 
 # おまじない

@@ -7,14 +7,15 @@
 <body>
   {% if name == "hage" %}
   <h1>スキンヘッドのジブラルタル</h1>
-  <img src="../static/images/gibraltar_hage.jpg" alt="ジブラルタルのスキンヘッドスキン">
   {% elif name == "red" %}
   <h1>赤いスキンのジブラルタル</h1>
-  <img src="../static/images/gibraltar_red.jpg" alt="ジブラルタルの赤いスキン">
   {% else %}
   <h1>部族スキンのジブラルタル</h1>
-  <img src="../static/images/gibraltar_buzoku.jpg" alt="ジブラルタルの部族スキン">
   {% endif %}
+  <form action="/index" method="POST">
+    <input type="text" name="name" placeholder="Enter name">
+    <input type="submit" value="送信">
+  </form>
   {% for word in okyo %}
   <p>{{ word }}</p>
   {% endfor %}
