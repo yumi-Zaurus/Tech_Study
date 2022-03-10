@@ -11,6 +11,12 @@
     {% else %}
     <h1>ただのバナナ</h1>
     {% endif %}
+    <!-- 以下を追加 -->
+    <form action="/index" method="POST">
+        <input type="text" name="name" placeholder="Enter name">
+        <input type="submit" value="Submit">
+    </form>
+    <!-- 追加終わり -->
     <img src="/static/images/banana.jpg" alt="バナナ">
     {% for word in mazical %}
     <p>{{word}}</p>

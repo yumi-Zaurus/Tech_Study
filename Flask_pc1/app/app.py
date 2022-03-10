@@ -18,6 +18,14 @@ def index():
     return render_template("index.html",name=name,mazical=mazical)
 
 
+#以下を追加
+@app.route("/index",methods=["post"])
+def post():
+    name = request.form["name"]
+    mazical = ["バナナと言ったら","黄色","黄色といったら","バナナ"]
+    return render_template("index.html", name=name, mazical=mazical)
+#追加終わり
+
 #おまじない
 if __name__ == "__main__":
     app.run(debug=True)
