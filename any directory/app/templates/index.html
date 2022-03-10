@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{name}}</title>
+    </head>
+    <body>
+    {% if name == "おじ" %}
+    <h1>スペシャル{{name}}？？</h1>
+    {% elif name %}
+    <h1>{{name}}？？</h1>
+    {% else %}
+    <h1>ただのおじさん</h1>
+    {% endif %}
+    <img src="/static/images/gazou.png" alt="おじさん">
+    {% for word in okyo %}
+    <p>{{word}}</p>
+    {% endfor %}
+    </body>
+</html>
