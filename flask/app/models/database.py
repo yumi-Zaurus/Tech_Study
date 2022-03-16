@@ -5,30 +5,26 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.exc import NoResultFound
 import cryptography
+import os
 
-# MySQLに接続するための情報
-engine = create_engine('mysql+pymysql://root:root@localhost/tech_study?charset=utf-8')
+# database.py と同じパスに、onegai.db というファイルを絶対パスで定義
+database_file = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'onegai.db')
+# MySQLを利用して↑で定義した絶対パスにDBを構築
+engine = create_engine('mysql+pymysql://root:root@localhost/tech_study?charset=utf-8' + database_file, convert_unicode=True)
+# DB接続用インスタンスを生成
+Session = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+db_session = Session()
 # オブジェクトを生成
 db = declarative_base()
-
-class Onegai(db):
-    # テーブル名
-    __tablename__ = "onegaicontents"
-    # カラム名 = Column(タイプ、オプション)
-    id = Column(Integer, primary_key=True)
-    title = Column(String(128), unique=True)
-    body = Column(Text)
-    date = Column(DateTime, default=datetime.now)
-
-    def __init__(self, title=None, body=None, date=None):
-        self.title = title
-        self.body = body
-        self.date = date
-
-    def __repr__(self):
-        return '<Title %r>' % (self.title)
+# ↑で生成したオブジェクトにDBの情報を流し込む
+db.query = db_session.query_property()
 
 
-Session = sessionmaker(bind=engine)
-db_session = Session()
-db.metadate.create_all(engine)
+
+# DB初期化のための関数を定義
+def init_db():
+    import models.models                # DB初期化対象のテーブル定義を指定
+    db.metadate.create_all(engine)      # テーブルを作成
+
+
+

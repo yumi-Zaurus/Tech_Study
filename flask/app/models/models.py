@@ -6,7 +6,7 @@ from datetime import datetime
 
 
 
-class onegaiContent(Base) :
+class onegaiContent(db) :
     # テーブル名
     __tablename__ = "onegaicontents"
     # カラム名 = Column(タイプ、オプション)
@@ -20,5 +20,5 @@ class onegaiContent(Base) :
         self.body = body
         self.date = date
 
-    def __repr(self) :
+    def __repr__(self) :
         return "<Title %r>" % (self.title)
