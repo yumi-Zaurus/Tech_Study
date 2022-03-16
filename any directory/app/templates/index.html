@@ -11,6 +11,10 @@
     {% else %}
     <h1>ただのおじさん</h1>
     {% endif %}
+    <form action="/index" method="POST">
+        <input type="text" name="name" placeholder="Enter name">
+        <input type="submit" value="Submit">
+    </form>
     <img src="/static/images/gazou.png" alt="おじさん">
     {% for word in okyo %}
     <p>{{word}}</p>
