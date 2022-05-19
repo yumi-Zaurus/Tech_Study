@@ -1,7 +1,7 @@
 # 使うタイプをimport
-from sqlalchemy import Clomun, Integer, String, Text, DateTime
-# modelsディレクトリにある database.py から Base をimport
-from models.database import Base
+from sqlalchemy import Column, Integer, String, Text, DateTime
+# modelsディレクトリにある database.py から db をimport
+from models.database import db
 from datetime import datetime
 
 

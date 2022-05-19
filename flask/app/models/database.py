@@ -2,7 +2,7 @@
 from sqlalchemy import create_engine, Column, Integer, String, Text, DateTime
 from datetime import datetime
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.orm.exc import NoResultFound
 import cryptography
 import os
@@ -13,7 +13,7 @@ database_file = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'onegai
 engine = create_engine('mysql+pymysql://root:root@localhost/tech_study?charset=utf-8' + database_file, convert_unicode=True)
 # DB接続用インスタンスを生成
 Session = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-db_session = Session()
+db_session = scoped_session(Session)
 # オブジェクトを生成
 db = declarative_base()
 # ↑で生成したオブジェクトにDBの情報を流し込む
