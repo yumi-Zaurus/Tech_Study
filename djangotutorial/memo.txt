@@ -1,0 +1,8 @@
+Windowsでvenv入る方法
+$ .djangoenv/bin/Activate.ps1
+
+Windowsでpython実行するとき
+$ py xxxxxx
+
+Windwosでpip実行するとき
+$ py -m pip xxx
